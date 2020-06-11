@@ -2,4 +2,11 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: make docker
+  - init: |
+      touch /tmp/.make-lock
+      make docker
+      
+      npm install -g npm
+      npm install 
+      npm run build
+      rm /tmp/.make-lock
